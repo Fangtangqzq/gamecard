@@ -6,9 +6,10 @@ data class Card(
     var isChosen: Boolean = false,
     var isMatched: Boolean = false
 ) {
-    fun match(other: Card): Int = when {
-        rank == other.rank -> 4
-        suit == other.suit -> 1
+    fun match(others: List<Card>): Int = when {
+        others.size != 2 -> 0
+        others.all { it.rank == rank } -> 4
+        others.all { it.suit == suit } -> 1
         else -> 0
     }
 }
