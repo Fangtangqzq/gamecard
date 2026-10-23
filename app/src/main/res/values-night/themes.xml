@@ -1,0 +1,11 @@
+<resources>
+    <style name="Base.Theme.Gamecard" parent="Theme.MaterialComponents.DayNight.DarkActionBar.Bridge">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/accent</item>
+        <item name="android:statusBarColor">@color/background</item>
+        <item name="android:navigationBarColor">@color/background</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+    <style name="Theme.Gamecard" parent="Base.Theme.Gamecard" />
+</resources>

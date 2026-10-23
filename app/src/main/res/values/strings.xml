@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">翻牌游戏</string>
+    <string name="home_eyebrow">PLAYER PROFILE · 玩家档案</string>
+    <string name="home_title">准备好翻牌了吗？</string>
+    <string name="home_subtitle">寻找同花色或同点数的牌，挑战你的最高分。</string>
+    <string name="profile_heading">当前玩家</string>
+    <string name="name_label">姓名</string>
+    <string name="gender_label">性别</string>
+    <string name="phone_label">电话</string>
+    <string name="best_label">历史最高分</string>
+    <string name="edit_profile">修改资料</string>
+    <string name="start_game">开始游戏  →</string>
+    <string name="default_name">玩家一号</string>
+    <string name="default_gender">保密</string>
+    <string name="default_phone">未填写</string>
+    <string name="edit_title">编辑玩家资料</string>
+    <string name="edit_subtitle">更新资料后，返回主页即可查看。</string>
+    <string name="name_hint">请输入姓名</string>
+    <string name="phone_hint">请输入电话</string>
+    <string name="save_profile">保存修改</string>
+    <string name="name_required">请输入姓名</string>
+    <string name="phone_required">请输入电话</string>
+    <string name="game_eyebrow">CARD MATCH · 翻牌挑战</string>
+    <string name="game_title">找出它们的联系</string>
+    <string name="score_label">本局得分</string>
+    <string name="score_value">%1$d 分</string>
+    <string name="game_instructions">同点数 +16 · 同花色 +4 · 翻牌 -1 · 失配 -2</string>
+    <string name="game_finished">没有可配对的牌了，试试新的一局！</string>
+    <string name="restart_game">重新开始</string>
+    <string name="card_back_symbol">✦</string>
+    <string name="card_face">%1$s\n%2$s</string>
+    <string name="card_hidden_description">第 %1$d 张牌，未翻开</string>
+    <string name="card_revealed_description">第 %1$d 张牌，%2$s</string>
+    <string name="state_suits" translatable="false">suits</string>
+    <string name="state_ranks" translatable="false">ranks</string>
+    <string name="state_chosen" translatable="false">chosen</string>
+    <string name="state_matched" translatable="false">matched</string>
+    <string name="state_score" translatable="false">score</string>
+    <string name="test_player_name" translatable="false">测试玩家</string>
+    <string name="test_player_phone" translatable="false">13800138000</string>
+    <string-array name="gender_options">
+        <item>保密</item>
+        <item>男</item>
+        <item>女</item>
+        <item>其他</item>
+    </string-array>
+    <string-array name="card_ranks">
+        <item>A</item><item>2</item><item>3</item><item>4</item><item>5</item>
+        <item>6</item><item>7</item><item>8</item><item>9</item><item>10</item>
+        <item>J</item><item>Q</item><item>K</item>
+    </string-array>
+    <string-array name="card_suits">
+        <item>♥</item><item>♦</item><item>♠</item><item>♣</item>
+    </string-array>
+</resources>
