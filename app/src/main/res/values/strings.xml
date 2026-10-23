@@ -1,8 +1,13 @@
 <resources>
-    <string name="app_name">2024110531唐尚宇</string>
+    <string name="app_name">唐尚宇2024110531</string>
+    <string name="menu_more">更多选项</string>
+    <string name="menu_more_symbol">⋮</string>
+    <string name="about_title">关于</string>
+    <string name="about_message">唐尚宇 · 2024110531\n翻牌挑战：选择三张同点数或同花色的牌进行配对。</string>
+    <string name="confirm">确定</string>
     <string name="home_eyebrow">PLAYER PROFILE · 玩家档案</string>
     <string name="home_title">准备好翻牌了吗？</string>
-    <string name="home_subtitle">寻找同花色或同点数的牌，挑战你的最高分。</string>
+    <string name="home_subtitle">寻找三张同花色或同点数的牌，挑战你的最高分。</string>
     <string name="profile_heading">当前玩家</string>
     <string name="name_label">姓名</string>
     <string name="gender_label">性别</string>
@@ -24,8 +29,8 @@
     <string name="game_title">找出它们的联系</string>
     <string name="score_label">本局得分</string>
     <string name="score_value">%1$d 分</string>
-    <string name="game_instructions">同点数 +16 · 同花色 +4 · 翻牌 -1 · 失配 -2</string>
-    <string name="game_finished">没有可配对的牌了，试试新的一局！</string>
+    <string name="game_instructions">三张同点数 +16 · 三张同花色 +4 · 每翻一张 -1 · 失配 -2</string>
+    <string name="game_finished">没有可配对的三张牌了，试试新的一局！</string>
     <string name="restart_game">重新开始</string>
     <string name="card_back_symbol">✦</string>
     <string name="card_face">%1$s\n%2$s</string>

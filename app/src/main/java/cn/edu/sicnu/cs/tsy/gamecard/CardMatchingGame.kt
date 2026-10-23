@@ -1,9 +1,12 @@
 package cn.edu.sicnu.cs.tsy.gamecard
 
 class CardMatchingGame private constructor(
-    val cards: List<Card>,
+    initialCards: List<Card>,
     var score: Int
 ) {
+    var cards: List<Card> = initialCards
+        private set
+
     constructor(count: Int, deck: Deck = Deck()) : this(
         List(count.coerceIn(0, 52)) { deck.drawRandomCard()!! }, 0
     )
@@ -13,12 +16,19 @@ class CardMatchingGame private constructor(
             CardMatchingGame(cards, score)
     }
 
+    fun reset(deck: Deck = Deck()) {
+        cards = List(cards.size) { deck.drawRandomCard()!! }
+        score = 0
+    }
+
     val isFinished: Boolean
         get() {
             val remaining = cards.filterNot { it.isMatched }
             return remaining.indices.none { first ->
                 (first + 1 until remaining.size).any { second ->
-                    remaining[first].match(remaining[second]) > 0
+                    (second + 1 until remaining.size).any { third ->
+                        remaining[first].match(listOf(remaining[second], remaining[third])) > 0
+                    }
                 }
             }
         }
@@ -31,16 +41,16 @@ class CardMatchingGame private constructor(
             return
         }
 
-        val other = cards.firstOrNull { it.isChosen && !it.isMatched }
-        if (other != null) {
-            val matchScore = card.match(other)
+        val chosen = cards.filter { it.isChosen && !it.isMatched }
+        if (chosen.size == 2) {
+            val matchScore = card.match(chosen)
             if (matchScore > 0) {
                 score += matchScore * 4
-                other.isMatched = true
+                chosen.forEach { it.isMatched = true }
                 card.isMatched = true
             } else {
                 score -= 2
-                other.isChosen = false
+                chosen.forEach { it.isChosen = false }
             }
         }
         score -= 1
