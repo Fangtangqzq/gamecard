@@ -12,7 +12,7 @@ class EditProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profile)
 
-        val profile = PlayerSession.get(this)
+        val profile = PlayerSession.profile(this)
         val nameInput = findViewById<EditText>(R.id.nameInput)
         val phoneInput = findViewById<EditText>(R.id.phoneInput)
         val genderInput = findViewById<Spinner>(R.id.genderInput)
@@ -34,9 +34,7 @@ class EditProfileActivity : AppCompatActivity() {
                 name.isEmpty() -> nameInput.error = getString(R.string.name_required)
                 phone.isEmpty() -> phoneInput.error = getString(R.string.phone_required)
                 else -> {
-                    profile.name = name
-                    profile.phone = phone
-                    profile.gender = genderInput.selectedItem.toString()
+                    PlayerSession.updateProfile(this, name, genderInput.selectedItem.toString(), phone)
                     setResult(Activity.RESULT_OK)
                     finish()
                 }

@@ -1,17 +1,32 @@
 package cn.edu.sicnu.cs.tsy.gamecard
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var bottomNavigation: BottomNavigationView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         PlayerSession.get(this)
+
+        bottomNavigation = findViewById(R.id.bottomNavigation)
+        bottomNavigation.setOnItemSelectedListener { item ->
+            showFragment(item.itemId)
+            true
+        }
+
+        val selectedItem = savedInstanceState?.getInt(STATE_SELECTED_ITEM)
+            ?: R.id.navProfile
+        if (supportFragmentManager.findFragmentById(R.id.fragmentContainer) == null) {
+            showFragment(selectedItem)
+        }
+        bottomNavigation.selectedItemId = selectedItem
 
         val menuButton = findViewById<android.view.View>(R.id.menuButton)
         menuButton.setOnClickListener {
@@ -32,21 +47,27 @@ class MainActivity : AppCompatActivity() {
                 show()
             }
         }
-
-        findViewById<android.view.View>(R.id.editProfileButton).setOnClickListener {
-            startActivity(Intent(this, EditProfileActivity::class.java))
-        }
-        findViewById<android.view.View>(R.id.playButton).setOnClickListener {
-            startActivity(Intent(this, GameActivity::class.java))
-        }
     }
 
-    override fun onResume() {
-        super.onResume()
-        val profile = PlayerSession.get(this)
-        findViewById<TextView>(R.id.profileName).text = profile.name
-        findViewById<TextView>(R.id.profileGender).text = profile.gender
-        findViewById<TextView>(R.id.profilePhone).text = profile.phone
-        findViewById<TextView>(R.id.bestScore).text = getString(R.string.score_value, profile.highScore)
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putInt(STATE_SELECTED_ITEM, bottomNavigation.selectedItemId)
+        super.onSaveInstanceState(outState)
+    }
+
+    private fun showFragment(itemId: Int) {
+        val fragment: Fragment = when (itemId) {
+            R.id.navTwoCard -> TwoCardGameFragment()
+            R.id.navThreeCard -> ThreeCardGameFragment()
+            else -> ProfileFragment()
+        }
+        val current = supportFragmentManager.findFragmentById(R.id.fragmentContainer)
+        if (current != null && current::class.java == fragment::class.java) return
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, fragment)
+            .commitNow()
+    }
+
+    private companion object {
+        const val STATE_SELECTED_ITEM = "selected_navigation_item"
     }
 }

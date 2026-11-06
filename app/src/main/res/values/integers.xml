@@ -1,4 +1,6 @@
 <resources>
-    <integer name="game_card_count">24</integer>
-    <integer name="game_column_count">4</integer>
+    <integer name="two_card_count">16</integer>
+    <integer name="two_card_column_count">4</integer>
+    <integer name="three_card_count">24</integer>
+    <integer name="three_card_column_count">6</integer>
 </resources>

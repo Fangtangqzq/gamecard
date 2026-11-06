@@ -12,7 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gamecard">
         <activity android:name=".EditProfileActivity" android:exported="false" />
-        <activity android:name=".GameActivity" android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
